@@ -42,14 +42,12 @@
     box-shadow: 0 0 25px #39FF14;
     }
 
-    /* Delay each dot */
     .wave-dot:nth-child(1)::before { animation-delay: 0s; }
     .wave-dot:nth-child(2)::before { animation-delay: 0.2s; }
     .wave-dot:nth-child(3)::before { animation-delay: 0.4s; }
     .wave-dot:nth-child(4)::before { animation-delay: 0.6s; }
     .wave-dot:nth-child(5)::before { animation-delay: 0.8s; }
 
-    /* Wave animation */
     @keyframes wave {
     50%, 75% {
         transform: scale(2.6);
@@ -294,7 +292,6 @@ document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', e => {
     const href = link.getAttribute('href');
 
-    // ignore same-page or mail/anchor links
     if (!href || href.startsWith('index.html') || href.startsWith('#') || href.startsWith('mailto:'))
       return;
 
@@ -303,7 +300,6 @@ document.querySelectorAll('a').forEach(link => {
     const loader = document.querySelector('.wave-loader');
     loader.style.display = 'flex';
 
-    // short delay before navigating
     setTimeout(() => {
       window.location.href = href;
     }, 900);
@@ -315,3 +311,4 @@ document.querySelectorAll('a').forEach(link => {
 
 </body>
 </html>
+
