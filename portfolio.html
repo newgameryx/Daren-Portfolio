@@ -149,7 +149,6 @@
         margin-bottom: 5px;
     }
 
-    /* Each section */
     .section {
         display: flex;
         align-items: center;
@@ -226,7 +225,6 @@
         filter: drop-shadow(0 0 6px #39FF14);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
         .section {
             flex-direction: column;
@@ -282,13 +280,12 @@
         padding: 30px;
         width: 500px;
         max-width: 90%;
-        max-height: 80vh; 
-        overflow-y: auto;
+        max-height: 80vh; /* <-- limit height */
+        overflow-y: auto;  /* <-- scrollable */
         box-shadow: 0 0 20px #39FF14;
         animation: modalPop 0.25s ease-out;
     }
 
-    /* Scrollbar styling */
     .modal-content::-webkit-scrollbar {
         width: 6px;
     }
@@ -333,7 +330,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
     margin-top: 20px;
     font-size: 0.8em;
     color: #555;
@@ -349,7 +346,11 @@
         text-underline-offset: 2px;
     }
 
-    button.transcript{
+    .button-container{
+        text-align: center;
+    }
+
+    .transcript {
         background: transparent;
         border: 1px solid #39FF14;
         color: #39FF14;
@@ -357,14 +358,15 @@
         border-radius: 4px;
         cursor: pointer;
         font-size: 0.95rem;
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
+
         transition: 0.3s;
-        margin-top: 10px;
-        justify-content: center;
-        display: block;
-        margin: 20px auto 0;
     }
 
-    button.transcript:hover{
+
+    .transcript:hover{
         
         background: #39FF14;
         color: #000;
@@ -377,7 +379,6 @@
         font-size: 1.2rem;
     }
 
-    /* Skills bars */
     .skill {
         margin-bottom: 20px;
     }
@@ -522,7 +523,9 @@
             Results: 1A<br>
             Participated in various school clubs and activities, developing teamwork and leadership skills.
         </p>
-                <a href="#"><button class="transcript">View Transcript</button></a>
+            <div class="button-container">
+                <a href="#" class="transcript">View Transcript</a>
+            </div>
     </div>
 </div>
 
@@ -711,7 +714,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("show");
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.2 });
@@ -741,5 +744,3 @@ document.querySelectorAll('a').forEach(link => {
 
 </body>
 </html>
-
-
