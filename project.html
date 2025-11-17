@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Wave Neon Loader */
+    .wave-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    }
+
+    .wave-dot {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    margin: 0.8em;
+    border-radius: 50%;
+    background: #39FF14;
+    box-shadow: 0 0 10px #39FF14;
+    }
+
+    .wave-dot::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #39FF14;
+    border-radius: 50%;
+    animation: wave 1.4s ease-out infinite;
+    box-shadow: 0 0 25px #39FF14;
+    }
+
+    /* Delay each dot */
+    .wave-dot:nth-child(1)::before { animation-delay: 0s; }
+    .wave-dot:nth-child(2)::before { animation-delay: 0.2s; }
+    .wave-dot:nth-child(3)::before { animation-delay: 0.4s; }
+    .wave-dot:nth-child(4)::before { animation-delay: 0.6s; }
+    .wave-dot:nth-child(5)::before { animation-delay: 0.8s; }
+
+    /* Wave animation */
+    @keyframes wave {
+    50%, 75% {
+        transform: scale(2.6);
+    }
+    80%, 100% {
+        opacity: 0;
+    }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #0a0a0a;
+      padding: 30px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #39FF14;
+      box-sizing: border-box;
+    }
+
+    .header h1 {
+      color: #39FF14;
+      font-size: 1.8rem;
+      text-shadow: 0 0 10px #39FF14;
+      margin: 0;
+      margin-left: -40px;
+    }
+
+    .header ul {
+      list-style: none;
+      display: flex;
+      gap: 55px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s, text-shadow 0.3s;
+      position: relative;
+      top: 5px;
+    }
+
+    .header ul li a:hover,
+    .header ul li a.active {
+      color: #39FF14;
+      text-shadow: 0 0 8px #39FF14;
+      text-decoration: underline #39FF14;
+      text-underline-offset: 5px;
+    }
+
+    .header button {
+      background-color: transparent;
+      border: 1px solid #39FF14;
+      color: #39FF14;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .header button:hover {
+      background-color: #39FF14;
+      color: #000;
+      box-shadow: 0 0 10px #39FF14;
+    }
+
+    .project h1{
+        color: #39FF14;
+        text-shadow: 0 0 8px #39FF14;
+        text-align: center;
+    }
+
+    .section {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 per row */
+        gap: 30px; /* space between boxes */
+        padding: 40px 5vw;
+    }
+
+    .project-card {
+        background-color: #0f0f0f;
+        border: 1px solid #39FF14;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        box-sizing: border-box; 
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    .project-card:hover{
+        transform: scale(1.08);
+        box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+    }
+
+    .project-card h2{
+        color: #39FF14;
+        text-shadow:0 0 4px #39FF14;
+        font-size: 1.35rem;
+        margin-top: -5px;
+        margin-bottom: 10px;
+        min-height: 50px;
+    }
+
+    .project-card h3{
+        font-size: 0.97rem;
+        text-shadow: 0 0 2.5px #fff;
+        text-align: start;
+        margin-bottom: 5px;
+        min-height: 50px;
+    }
+
+    .overview{
+        font-size: 0.8rem;
+        text-align: start;
+        line-height: 20px;
+        letter-spacing: 0.7px;
+        margin-bottom: 10px;
+        min-height: 150px;
+    }
+
+    .project-card button {
+        background-color: transparent;
+        border: 1px solid #39FF14;
+        color: #39FF14;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .project-card button:hover {
+        background-color: #39FF14;
+        color: #000;
+        box-shadow: 0 0 10px #39FF14;
+    }
+
+
+
+    /* Footer */
+    footer {
+      background-color: #0a0a0a;
+      text-align: center;
+      padding: 10px 0;
+      box-shadow: 0 -2px 4px rgba(0,0,0,0.7);
+      border-top: 1px solid #39FF14;
+      margin-top: auto;
+    }
+
+    footer img {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: transform 0.3s, filter 0.3s;
+      filter: brightness(0) invert(1);
+    }
+
+    footer img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 6px #39FF14);
+    }
+
+    main {
+      padding-top: 120px;
+    }
+
+    @media (max-width: 1024px) {
+    .section {
+        grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 650px) {
+        .section {
+            grid-template-columns: 1fr;
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wave-loader">
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+  </div>
+
+  <header class="header">
+    <h1>Daren</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="project.html" class="active">Projects</a></li>
+      <li>
+        <a href="mailto:darenchangyx@gmail.com?subject=Hello&body=Hi%20there!">
+          <button>Contact Me</button>
+        </a>
+      </li>
+    </ul>
+  </header>
+
+  <main>
+    <div class="project">
+        <h1>My Projects</h1>
+        <div class="section">
+            <div class="project-card">
+                <h2>Python Bakery Management System</h2>
+                <h3>Tech Stack : Python (CLI, File Handling)</h3>
+                <P class="overview">Overview:<br>This is a Python-based bakery management system with a terminal interface and handles a multi-role login. Using .txt files for data storage, it manages orders, inventory, user accounts, and sales.</P>
+                <a href="#"><button>view code</button></a>
+            </div>
+            <div class="project-card">
+                <h2>PPE Inventory System<br></h2>
+                <h3>Tech Stack : Java (Object-Oriented Programming), Swing, File I/O</h3>
+                <P class="overview">Overview:<br>This is a Java GUI-based PPE inventory system with login authentication and role-based access for admins and staff. It manages users, tracks inventory and transactions, and handles suppliers and hospitals using .txt files.</P>
+                <a href="#"><button>view code</button></a>
+            </div>
+            <div class="project-card">
+                <h2>Sustainable Living Community Web App</h2>
+                <h3>Tech Stack : HTML, CSS, JavaScript, PHP, MySQL</h3>
+                <P class="overview">Overview:<br>This is a web-based sustainable living application with a responsive interface that promotes eco-friendly practices. It provides recycling programs, community gardening features, and an eco-friendly product swap for users.</P>
+                <a href="#"><button>view code</button></a>
+            </div>
+            <div class="project-card">
+                <h2>Bathroom In-Use System</h2>
+                <h3>Tech Stack : Arduino, C#, Sensors, H2C Library</h3>
+                <P class="overview">Overview:<br>Developed a smart bathroom occupancy detection system using Arduino Uno R3. The system integrates motion, light, and ultrasonic sensors to accurately detect whether the bathroom is in use, enhancing convenience and efficiency.</P>
+                <a href="#"><button>view code</button></a>
+            </div>
+            <div class="project-card">
+                <h2>Final Year Project : All-In-One Campus Web App</h2>
+                <h3>Tech Stack : HTML, CSS, JavaScript, PHP, MySQL</h3>
+                <P class="overview">Overview:<br>This a campus web app with student, lecturer, and admin roles. Admins handle bookings and schedules, students can do bookings, track classes, use a campus wallet, and view exam results, while lecturers can share notes, take attendance, and post grades.</P>
+                <a href="#"><button>view code</button></a>
+            </div>          
+        </div>
+    </div>
+  </main>
+
+  <footer>
+    <a href="#"><img src="https://pngimg.com/uploads/github/github_PNG40.png" alt="GitHub"></a>
+    <a href="#"><img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG12.png" alt="LinkedIn"></a>
+    <a href="#"><img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord"></a>
+  </footer>
+
+<script>
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+
+    // ignore same-page or mail/anchor links
+    if (!href || href.startsWith('project.html') || href.startsWith('#') || href.startsWith('mailto:'))
+      return;
+
+    e.preventDefault();
+
+    const loader = document.querySelector('.wave-loader');
+    loader.style.display = 'flex';
+
+    // short delay before navigating
+    setTimeout(() => {
+      window.location.href = href;
+    }, 900);
+  });
+});
+</script>
+</body>
+</html>

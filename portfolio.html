@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    /* Wave Neon Loader */
+    .wave-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    }
+
+    .wave-dot {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    margin: 0.8em;
+    border-radius: 50%;
+    background: #39FF14;
+    box-shadow: 0 0 10px #39FF14;
+    }
+
+    .wave-dot::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #39FF14;
+    border-radius: 50%;
+    animation: wave 1.4s ease-out infinite;
+    box-shadow: 0 0 25px #39FF14;
+    }
+
+    /* Delay each dot */
+    .wave-dot:nth-child(1)::before { animation-delay: 0s; }
+    .wave-dot:nth-child(2)::before { animation-delay: 0.2s; }
+    .wave-dot:nth-child(3)::before { animation-delay: 0.4s; }
+    .wave-dot:nth-child(4)::before { animation-delay: 0.6s; }
+    .wave-dot:nth-child(5)::before { animation-delay: 0.8s; }
+
+    /* Wave animation */
+    @keyframes wave {
+    50%, 75% {
+        transform: scale(2.6);
+    }
+    80%, 100% {
+        opacity: 0;
+    }
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #0a0a0a;
+        padding: 30px 5vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #39FF14;
+        box-sizing: border-box;
+    }
+
+    .header h1 {
+        color: #39FF14;
+        font-size: 1.8rem;
+        text-shadow: 0 0 10px #39FF14;
+        margin: 0;
+        margin-left: -40px;
+    }
+
+    .header ul {
+        list-style: none;
+        display: flex;
+        gap: 55px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        transition: color 0.3s, text-shadow 0.3s;
+        position: relative;
+        top: 5px;
+    }
+
+    .header ul li a:hover,
+    .header ul li a.active {
+        color: #39FF14;
+        text-shadow: 0 0 8px #39FF14;
+        text-decoration: underline #39FF14;
+        text-underline-offset: 5px;
+    }
+
+    .header button {
+        background-color: transparent;
+        border: 1px solid #39FF14;
+        color: #39FF14;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .header button:hover {
+        background-color: #39FF14;
+        color: #000;
+        box-shadow: 0 0 10px #39FF14;
+    }
+
+    /* Portfolio Container */
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        padding: 120px 60px 40px;
+    }
+
+    .portfolio h1 {
+        text-align: center;
+        color: #39FF14;
+        text-shadow: 0 0 8px #39FF14;
+        margin-bottom: 5px;
+    }
+
+    /* Each section */
+    .section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        height: 250px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease-out;
+    }
+
+    /* When visible */
+    .section.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .section:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .section img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        filter: drop-shadow(0 0 10px #39FF14);
+
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .section img:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 20px #39FF14);
+    }
+
+
+    .section .text {
+        max-width: 1000px;
+    }
+
+    .section h2 {
+        color: #39FF14;
+        text-shadow: 0 0 6px #39FF14;
+        margin: 0 0 10px;
+        font-size: 1.3rem;
+    }
+
+    .section p {
+        color: #fff;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #0a0a0a;
+        text-align: center;
+        padding: 15px 0;
+        border-top: 1px solid #39FF14;
+        margin-top: auto;
+    }
+
+    footer img {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: transform 0.3s, filter 0.3s;
+        filter: brightness(0) invert(1);
+    }
+
+    footer img:hover {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 6px #39FF14);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .section {
+            flex-direction: column;
+            text-align: center;
+            height: auto;
+        }
+
+        .section:nth-child(even) {
+            flex-direction: column;
+        }
+
+        .section img {
+            width: 100%;
+            max-width: 350px;
+        }
+    }
+
+    /* ============ MODAL + BUTTON DESIGN ============ */
+
+    button.readmore {
+        background: transparent;
+        border: 1px solid #39FF14;
+        color: #39FF14;
+        padding: 8px 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+    button.readmore:hover {
+        background: #39FF14;
+        color: #000;
+        box-shadow: 0 0 15px #39FF14;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(4px);
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+    }
+
+    .modal-content {
+        background: #0a0a0a;
+        border: 1px solid #39FF14;
+        border-radius: 10px;
+        padding: 30px;
+        width: 500px;
+        max-width: 90%;
+        max-height: 80vh; /* <-- limit height */
+        overflow-y: auto;  /* <-- scrollable */
+        box-shadow: 0 0 20px #39FF14;
+        animation: modalPop 0.25s ease-out;
+    }
+
+    /* Scrollbar styling */
+    .modal-content::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+        background-color: #39FF14;
+        border-radius: 3px;
+    }
+
+    .modal-content h2 {
+        color: #39FF14;
+        text-shadow: 0 0 8px #39FF14;
+        margin-top: 0;
+    }
+
+    .modal-content p {
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .close {
+        float: right;
+        font-size: 32px;
+        cursor: pointer;
+        color: #39FF14;
+        text-shadow: 0 0 8px #39FF14;
+        transition: 0.3s;
+        margin-top: -10px;
+    }
+
+    .close:hover {
+        color: #fff;
+        text-shadow: 0 0 12px #fff;
+    }
+
+    @keyframes modalPop {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content .contact-info {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    gap: 10px; /* space between email, phone, linkedin */
+    flex-wrap: wrap; /* wrap if too long */
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #555;
+    }
+
+    .contact-info a {
+        color: #39FF14;
+        text-decoration: none;
+    }
+
+    .contact-info a:hover{
+        text-decoration: underline #39FF14;
+        text-underline-offset: 2px;
+    }
+
+    button.transcript{
+        background: transparent;
+        border: 1px solid #39FF14;
+        color: #39FF14;
+        padding: 8px 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: 0.3s;
+        margin-top: 10px;
+        justify-content: center;
+        display: block;
+        margin: 20px auto 0;
+    }
+
+    button.transcript:hover{
+        
+        background: #39FF14;
+        color: #000;
+        box-shadow: 0 0 15px #39FF14;
+    }
+
+    #p1{
+        color: #39FF14;
+        text-shadow: 0 0 10px #39FF14;
+        font-size: 1.2rem;
+    }
+
+    /* Skills bars */
+    .skill {
+        margin-bottom: 20px;
+    }
+
+    .skill p {
+        margin: 0 0 5px 0;
+        color: #fff;
+        font-weight: 400;
+        font-size: 0.9rem;
+        text-shadow: 0 0 5px #FFF ;
+    }
+
+    .skill-bar {
+        background-color: #111;
+        border: 1px solid #39FF14;
+        border-radius: 8px;
+        width: 100%;
+        height: 8px;
+        overflow: hidden;
+    }
+
+    .skill-level {
+        height: 100%;
+        background-color: #39FF14;
+        width: 0%;
+        border-radius: 8px 0 0 8px;
+        transition: width 1s ease-in-out;
+    }
+</style>
+
+</head>
+<body>
+<div class="wave-loader">
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+    <div class="wave-dot"></div>
+</div>
+
+<header class="header">
+    <h1>Daren</h1>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="mailto:darenchangyx@gmail.com.com?subject=Hello&body=Hi%20there!"><button>Contact Me</button></a></li>
+    </ul>
+</header>
+
+<div class="portfolio">
+    <h1>My Portfolio</h1>
+
+    <!-- SECTION 1 -->
+    <div class="section">
+        <img src="https://clipground.com/images/about-me-icon-png-6.png" alt="About Me">
+        <div class="text">
+            <h2>About Me</h2>
+            <p>Hi! I’m Daren Chang, a back-end developer and student at Asia Pacific University, currently pursuing a degree in Cyber Security. I’m passionate about coding and technology, especially when it comes to building small projects and automation programs that simplify tasks and solve real-world problems. I enjoy exploring new tools, learning new programming languages, and constantly improving my skills to stay ahead in the fast-moving tech world.
+            </p>
+            <button id="aboutBtn" class="readmore">Read More</button>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section">
+        <img src="https://cdn-icons-png.freepik.com/256/1098/1098887.png" alt="Education">
+        <div class="text">
+            <h2>My Education</h2>
+            <p>I am currently pursuing a degree in Cyber Security. I completed a Diploma in ICT with a CGPA of 3.2 and achieved 1A in SPM. During my diploma, I worked on projects including a Python bakery system, a Java GUI stock management system, and several web development projects.</p>
+            <button id="eduBtn" class="readmore">Read More</button>
+        </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section">
+        <img src="https://icon-library.com/images/skills-icon-png/skills-icon-png-3.jpg" alt="Skills">
+        <div class="text">
+            <h2>My Skills</h2>
+            <p>I have experience with several programming languages and technologies including Python, PHP, HTML, CSS, JavaScript, C#, Java, SQL, and Object-Oriented Programming (OOP). I also possess key soft skills such as teamwork, adaptability, and the ability to perform under stress.</p>
+            <button id="skillsBtn" class="readmore">Read More</button>
+        </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section">
+        <img src="https://clipground.com/images/work-experience-icon-png-3.png" alt="Working">
+        <div class="text">
+            <h2>My Working Experience</h2>
+            <p>I have gained valuable experience through various part-time roles, including freelance event crew, part-time stock coordinator at Balenciaga, and assistant sales associate at Burberry. These roles have helped me build strong communication, problem-solving, and teamwork skills, while also allowing me to thrive in fast-paced and high-pressure environments.</p>
+            <button id="workingBtn" class="readmore">Read More</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODALS -->
+
+<div id="aboutModal" class="modal">
+    <div class="modal-content">
+        <span class="close close-about">&times;</span>
+        <h2>More About Me</h2>
+        <p>I specialize in back-end development, primarily using Python, and I enjoy adapting to new programming languages and technologies. My focus is on building automation programs and logic-based solutions that are both efficient and practical.<br><br>
+            I am outgoing, easygoing, ambitious, confident, courageous, curious, and enthusiastic. I am always eager to learn and take on new challenges. I find inspiration in creating programs that solve problems and seeing them work exactly as I envisioned. It is both rewarding and motivating.<br><br>
+            Outside of coding, I have a variety of hobbies that keep me energized. I enjoy gaming, building PC hardware, and exploring car culture. I also like outdoor sports such as basketball, volleyball, ping pong, rock climbing, and going to the gym. These activities help me stay active, creative, and social.<br><br>
+            I am always looking to grow, collaborate, and explore new ideas. Feel free to check out my projects or reach out. I would love to connect.</p>
+        <p>
+            <span class="contact-info"><a href="mailto:darenchangyx@gmail.com.com?subject=Hello&body=Hi%20there!">darenchangyx@gmail.com</a> | +60187807687 | <a href="#">linkedin.com/in/daren-chang</a></span>
+        </p>
+    </div>
+</div>
+
+<div id="eduModal" class="modal">
+    <div class="modal-content">
+        <span class="close close-edu">&times;</span>
+        <h2>More About My Education</h2>
+        <p id="p1">Asia Pacific University<br></p>
+        <p>
+            Degree in Cyber Security | 2026 – Present
+            <br>
+            Currently pursuing a degree in Cyber Security, developing skills in network security, ethical hacking, and data protection. Focused on applying technical knowledge to practical projects and challenges.
+        </p>          
+        <p id="p1">Asia Pacific University</p>
+        <p>
+            Diploma in ICT | April 2023 – 2025
+            <br>
+            Relevant coursework: Web Development, Database Management, Networking, System Design, Programming<br>
+            CGPA: 3.2/4.0<br>
+            Activities: Active class representative and project team leader
+            <br><br>
+            Key projects and assessments:
+            <ul>
+                <li>Python Bakery System (terminal-based): Developed a system to manage bakery orders using Python.</li><br>
+                <li>Java PPE GUI Stock Management System: Built a graphical stock management system applying object-oriented programming principles.</li><br>
+                <li>3R Website: Designed and implemented a website using PHP, JavaScript, HTML, and CSS.</li><br>
+                <li>Final Year Project – All-in-One Campus Website: Built a comprehensive campus website integrating front-end and back-end development with PHP, JavaScript, HTML, and CSS.</li>
+            </ul>
+        </p>
+        <p id="p1">SMK Tropicana</p>
+        <p>
+            SPM | 2017 – 2023
+            <br>
+            Results: 1A<br>
+            Participated in various school clubs and activities, developing teamwork and leadership skills.
+        </p>
+                <a href="#"><button class="transcript">View Transcript</button></a>
+    </div>
+</div>
+
+<div id="skillsModal" class="modal">
+    <div class="modal-content">
+        <span class="close close-skills">&times;</span>
+        <h2>More About My Skills</h2>
+        <p id="p1">Programming Languages</p>
+        <div class="skill" id="html">
+            <p>HTML</p>
+            <div class="skill-bar">
+                <div class="skill-level"></div>
+            </div>
+        </div>
+        <div class="skill" id="css">
+            <p>CSS</p>
+            <div class="skill-bar">
+                <div class="skill-level"></div>
+            </div>
+        </div>
+        <div class="skill" id="js">
+            <p>JavaScript</p>
+            <div class="skill-bar">
+                <div class="skill-level"></div>
+            </div>
+        </div>
+        <div class="skill" id="python">
+            <p>Python</p>
+            <div class="skill-bar">
+                <div class="skill-level"></div>
+            </div>
+        </div>
+        <div class="skill" id="c#">
+            <p>C#</p>
+            <div class="skill-bar">
+                <div class="skill-level"></div>
+            </div>
+        </div>
+        <div class="skill" id="java">
+            <p>Java</p>
+            <div class="skill-bar">
+                <div class="skill-level"></div>
+            </div>
+        </div>
+        <div class="skill" id="sql">
+            <p>SQL</p>
+            <div class="skill-bar">
+                <div class="skill-level"></div>
+            </div>
+        </div>
+        <p id="p1">Concepts and Frameworks</p>
+        <p>Object Oriented Programming</p>
+        <p id="p1">Networking</p>
+        <p>Knowledge of network protocols, network security, and network management</p>
+        <p id="p1">Soft Skills</p>
+        <p>
+            <ul>
+                <li>Teamwork : Able to work effectively in collaborative environments, contributing ideas and supporting team goals.</li><br>
+                <li>Adaptability : Flexible and able to quickly adjust to new tools, technologies, or project requirements.</li><br>
+                <li>Problem Solving : Skilled in analyzing issues and coming up with creative, effective solutions.</li><br>
+                <li>Performing Under Stress : Able to stay focused and maintain high performance in fast-paced or high-pressure situations.</li><br>
+                <li>Critical Thinking : Strong ability to evaluate complex problems and make informed decisions based on logical reasoning.</li>
+            </ul>
+        </p>
+    </div>
+</div>
+
+<div id="workingModal" class="modal">
+    <div class="modal-content">
+        <span class="close close-working">&times;</span>
+        <h2>More About My Working Experience</h2>
+        <p id="p1">Freelance Crew</p>
+        <p>
+            March 2023 – Present<br>
+            <ul>
+                <li>Assisted in the execution of high-profile events as crew and usher, including Volvo, Ford, and Vivo events.</li>
+                <li>Developed strong communication, alertness, and people skills while working through fast-paced and challenging work settings.</li>
+                <li>Able to adapt effectively to changing situations and perform well under pressure.</li>
+            </ul>
+        </p>
+        <p id="p1">MiCare Intern Software Developer & Data Analyst</p>
+        <p>
+            October 2025 – January 2026<br>
+            <ul>
+                <li>Create programs, scripts, and internal tools to automate repetitive tasks and improve team efficiency.</li>
+                <li>Support the data team with tasks such as cleaning, analyzing, and reporting data, helping streamline their work processes.</li>
+                <li>Supported the sales floor by ensuring the timely availability of products.</li>
+            </ul>
+        </p>
+        <p id="p1">Balenciaga  Part-time stock coordinator</p>
+        <p>
+            March 2025 – May 2025<br>
+            <ul>
+                <li>Utilized inventory management systems to track stock levels and generate reports.</li>
+                <li>Identified and resolved stock discrepancies to maintain data integrity.</li>
+                <li>Supported the sales floor by ensuring the timely availability of products.</li>
+            </ul>
+        </p>
+        <p id="p1">Balenciaga  Part-time stock coordinator</p>
+        <p>
+            December 2023 – February 2024<br>
+            <ul>
+                <li>Utilized inventory management systems to track stock levels and generate reports.</li>
+                <li>Identified and resolved stock discrepancies to maintain data integrity.</li>
+                <li>Supported the sales floor by ensuring the timely availability of products.</li>
+            </ul>
+        </p>
+        <p id="p1">Burberry  Part-time assistant sales associate</p>
+        <p>
+            May 2023 – August 2023<br>
+            <ul>
+                <li>Maintained accurate records and documentation of transactions and inventory.</li>
+                <li>Developed strong communication and problem-solving skills in a fast-paced environment.</li>
+                <li>Learned and applied new product knowledge and store procedures quickly</li>
+            </ul>
+        </p>
+    </div>
+</div>
+
+<footer>
+    <a href="#"><img src="https://pngimg.com/uploads/github/github_PNG40.png" alt="GitHub"></a>
+    <a href="#"><img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG12.png" alt="LinkedIn"></a>
+    <a href="#"><img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord"></a>
+</footer>
+
+<script>
+// Skill data object with skill levels
+const skillData = [
+    { id: 'html', width: '90%' },
+    { id: 'css', width: '80%' },
+    { id: 'js', width: '70%' },
+    { id: 'python', width: '85%' },
+    { id: 'c#', width: '70%' },
+    { id: 'java', width: '60%' },
+    { id: 'sql', width: '100%' }
+];
+
+// Function to setup modals
+function setupModal(btnId, modalId, closeClass) {
+    const btn = document.getElementById(btnId);
+    const modal = document.getElementById(modalId);
+    const closeBtn = document.querySelector(closeClass);
+
+    btn.onclick = () => {
+        modal.style.display = "flex";
+        if (btnId === "skillsBtn") animateSkillLevels();
+    };
+
+    closeBtn.onclick = () => modal.style.display = "none";
+
+    window.onclick = (e) => {
+        if (e.target === modal) modal.style.display = "none";
+    }
+}
+
+const skillsBtn = document.getElementById("skillsBtn");
+
+// Function to animate skill levels from 0 to final width
+function animateSkillLevels() {
+    skillData.forEach(skill => {
+        const el = document.getElementById(skill.id).querySelector('.skill-level');
+        el.style.width = '0%';
+        setTimeout(() => {
+            el.style.width = skill.width;
+        }, 50);
+    });
+}
+
+function updateSkillLevels() {
+    skillData.forEach(skill => {
+        document.getElementById(skill.id).querySelector('.skill-level').style.width = skill.width;
+    });
+}
+
+setupModal("aboutBtn", "aboutModal", ".close-about");
+setupModal("eduBtn", "eduModal", ".close-edu");
+setupModal("skillsBtn", "skillsModal", ".close-skills");
+setupModal("workingBtn", "workingModal", ".close-working");
+
+skillsBtn.onclick = () => {
+    document.getElementById("skillsModal").style.display = "flex";
+    animateSkillLevels();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".section");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target); // animate once only
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+});
+
+
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+
+    // ignore same-page or mail/anchor links
+    if (!href || href.startsWith('portfolio.html') || href.startsWith('#') || href.startsWith('mailto:'))
+      return;
+
+    e.preventDefault();
+
+    const loader = document.querySelector('.wave-loader');
+    loader.style.display = 'flex';
+
+    // short delay before navigating
+    setTimeout(() => {
+      window.location.href = href;
+    }, 900);
+  });
+});
+</script>
+
+</body>
+</html>
