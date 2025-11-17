@@ -42,14 +42,12 @@
     box-shadow: 0 0 25px #39FF14;
     }
 
-    /* Delay each dot */
     .wave-dot:nth-child(1)::before { animation-delay: 0s; }
     .wave-dot:nth-child(2)::before { animation-delay: 0.2s; }
     .wave-dot:nth-child(3)::before { animation-delay: 0.4s; }
     .wave-dot:nth-child(4)::before { animation-delay: 0.6s; }
     .wave-dot:nth-child(5)::before { animation-delay: 0.8s; }
 
-    /* Wave animation */
     @keyframes wave {
     50%, 75% {
         transform: scale(2.6);
@@ -163,7 +161,6 @@
         transition: all 0.8s ease-out;
     }
 
-    /* When visible */
     .section.show {
         opacity: 1;
         transform: translateY(0);
@@ -285,8 +282,8 @@
         padding: 30px;
         width: 500px;
         max-width: 90%;
-        max-height: 80vh; /* <-- limit height */
-        overflow-y: auto;  /* <-- scrollable */
+        max-height: 80vh; 
+        overflow-y: auto;
         box-shadow: 0 0 20px #39FF14;
         animation: modalPop 0.25s ease-out;
     }
@@ -334,9 +331,9 @@
 
     .modal-content .contact-info {
     display: flex;
-    justify-content: center; /* centers horizontally */
-    gap: 10px; /* space between email, phone, linkedin */
-    flex-wrap: wrap; /* wrap if too long */
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
     margin-top: 20px;
     font-size: 0.8em;
     color: #555;
@@ -652,7 +649,6 @@
 </footer>
 
 <script>
-// Skill data object with skill levels
 const skillData = [
     { id: 'html', width: '90%' },
     { id: 'css', width: '80%' },
@@ -663,7 +659,6 @@ const skillData = [
     { id: 'sql', width: '100%' }
 ];
 
-// Function to setup modals
 function setupModal(btnId, modalId, closeClass) {
     const btn = document.getElementById(btnId);
     const modal = document.getElementById(modalId);
@@ -683,7 +678,6 @@ function setupModal(btnId, modalId, closeClass) {
 
 const skillsBtn = document.getElementById("skillsBtn");
 
-// Function to animate skill levels from 0 to final width
 function animateSkillLevels() {
     skillData.forEach(skill => {
         const el = document.getElementById(skill.id).querySelector('.skill-level');
@@ -717,7 +711,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("show");
-                observer.unobserve(entry.target); // animate once only
+                observer.unobserve(entry.target); 
             }
         });
     }, { threshold: 0.2 });
@@ -730,7 +724,6 @@ document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', e => {
     const href = link.getAttribute('href');
 
-    // ignore same-page or mail/anchor links
     if (!href || href.startsWith('portfolio.html') || href.startsWith('#') || href.startsWith('mailto:'))
       return;
 
@@ -739,7 +732,6 @@ document.querySelectorAll('a').forEach(link => {
     const loader = document.querySelector('.wave-loader');
     loader.style.display = 'flex';
 
-    // short delay before navigating
     setTimeout(() => {
       window.location.href = href;
     }, 900);
@@ -749,3 +741,4 @@ document.querySelectorAll('a').forEach(link => {
 
 </body>
 </html>
+
