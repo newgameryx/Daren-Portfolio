@@ -197,7 +197,6 @@
       transform: scale(0);
     }
 
-    /* Final state after popOut */
     .hero-photo.pop-out {
       opacity: 1;
       transform: scale(1);
@@ -492,7 +491,7 @@
 
     <!-- HERO -->
     <section class="hero">
-      <img src="your-photo.jpg" alt="Daren" class="hero-photo">
+      <img src="image/image.png" alt="Daren" class="hero-photo">
       <h1>Hi, I'm <span>Daren</span></h1>
       <h2>Developer • Web Apps • Python • Embedded Systems</h2>
       <p>I build practical digital solutions — from management systems to campus apps and smart IoT projects.</p>
@@ -580,13 +579,11 @@
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Trigger popOut animation
             heroPhoto.style.animation = "popOut 1s ease forwards";
-            
-            // Ensure final state is fixed after animation ends
+
             heroPhoto.addEventListener("animationend", () => {
               heroPhoto.classList.add("pop-out");
-              heroPhoto.style.animation = ""; // clear inline animation
+              heroPhoto.style.animation = "";
             }, { once: true });
 
             observer.disconnect();
@@ -620,3 +617,4 @@
 
 </body>
 </html>
+
