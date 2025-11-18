@@ -388,11 +388,11 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('glow-in');
-          observer.unobserve(entry.target); // Only animate once
+          observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.2 // 20% of card visible triggers animation
+      threshold: 0.2
     });
 
     // Observe each card
@@ -400,3 +400,4 @@
   </script>
 </body>
 </html>
+
