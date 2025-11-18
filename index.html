@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hi, I'm Daren!</title>
+  <title>Daren – Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
 
+  <style>
     /* Wave Neon Loader */
     .wave-loader {
     position: fixed;
@@ -57,192 +57,412 @@
     }
     }
 
-
-    body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #000;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: #000;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
     }
 
-    /* Header */
+    html {
+      font-size: clamp(14px, 0.95vw, 20px);
+    }
+
+    /* ==== HEADER ==== */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 5vw;
+        gap: 5px;
+        border-bottom-width: 1px;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+        margin-left: 0;
+      }
+
+      .header ul {
+        gap: 5px;
+      }
+
+      .header button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+    }
+
+
     .header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: #0a0a0a;
+      background: #0a0a0a;
       padding: 30px 5vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #39FF14;
       box-sizing: border-box;
-      flex-wrap: wrap;
-        gap: 10px;
     }
-
     .header h1 {
-        color: #39FF14;
-        font-size: 1.8rem;
-        text-shadow: 0 0 10px #39FF14;
-        margin: 0;
-        margin-left: -40px;
-    }
-
-    .header ul {
-        list-style: none;
-        display: flex;
-        gap: 55px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .header ul li a {
-        text-decoration: none;
-        color: #fff;
-        font-weight: 500;
-        transition: color 0.3s, text-shadow 0.3s;
-        position: relative;
-        top: 5px;
-    }
-
-    .header ul li a:hover,
-    .header ul li a.active {
-        color: #39FF14;
-        text-shadow: 0 0 8px #39FF14;
-        text-decoration: underline #39FF14;
-        text-underline-offset: 5px;
-    }
-
-    .header button {
-        background-color: transparent;
-        border: 1px solid #39FF14;
-        color: #39FF14;
-        padding: 8px 16px;
-        border-radius: 4px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .header button:hover {
-        background-color: #39FF14;
-        color: #000;
-        box-shadow: 0 0 10px #39FF14;
-    }
-    
-    main {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 50px;
-        padding: 160px 20px 60px;
-        flex-wrap: wrap;
-    }
-
-    .profilepic {
-      text-align: center;
-    }
-
-    .profilepic img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #39FF14;
-      box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
-      display: block;
-      margin: 0 auto 10px auto;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .profilepic img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 35px rgba(57, 255, 20, 0.8), 0 0 60px rgba(57, 255, 20, 0.4);
-    }
-
-    .contact-info {
-      margin-top: 35px;
-    }
-
-    .contact-info p {
-      margin: 10px 0;
-      font-size: 0.9rem;
-      color: #39FF14;
-      text-shadow: 0 0 3px#39FF14;
-    }
-
-    .aboutme {
-      max-width: 500px;
-    }
-
-    .aboutme h3 {
-      margin-top: 0;
       color: #39FF14;
       text-shadow: 0 0 10px #39FF14;
+      font-size: 1.9rem;
+      margin: 0;
+      margin-left: -50px;
+      white-space: nowrap;
     }
-
-    .aboutme p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .header ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      padding: 0;
+      margin: 0;
+      align-items: center;
     }
-
-    .aboutme button {
-      background-color: transparent;
+    .header ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+    .header ul li a:hover,
+    .header ul li a.active {
+      color: #39FF14;
+      text-shadow: 0 0 8px #39FF14;
+      text-decoration: underline #39FF14;
+      text-underline-offset: 5px;
+    }
+    .header button {
+      background: transparent;
       border: 1px solid #39FF14;
       color: #39FF14;
-      padding: 10px 20px;
+      padding: 8px 16px;
       border-radius: 4px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 10px;
+      transition: 0.3s;
     }
-
-    .aboutme button:hover {
-      background-color: #39FF14;
+    .header button:hover {
+      background: #39FF14;
       color: #000;
       box-shadow: 0 0 10px #39FF14;
     }
 
-    footer {
-      background-color: #0a0a0a;
+    /* MAIN CONTENT */
+    .home-container {
       text-align: center;
-      padding: 10px 0;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.7);
-      border-top: 1px solid #39FF14;
-      margin-top: auto;
+      margin-top: 120px;
     }
 
-    footer img {
-      width: 40px;
-      height: 40px;
-      margin: 0 10px;
-      cursor: pointer;
-      transition: transform 0.3s, filter 0.3s;
-      filter: brightness(0) invert(1);
+    /* HERO */
+    .hero {
+      padding: 80px 5vw;
+      max-width: 100%;
+      box-sizing: border-box;
     }
+
+        @keyframes popOut {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .hero-photo {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #39FF14;
+      box-shadow: 0 0 15px #39FF14;
+      margin: 0 auto 20px auto;
+      display: block;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    /* Final state after popOut */
+    .hero-photo.pop-out {
+      opacity: 1;
+      transform: scale(1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+
+    .hero-photo.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    .hero-photo:hover{
+        transform: scale(1.15);
+        box-shadow: 0 0 25px #39FF14;
+    }
+
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #39FF14;
+      text-shadow: 0 0 15px #39FF14;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.2rem, 1.6vw, 2rem);
+      color: #ddd;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: 0 auto 35px auto;
+      color: #bbb;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn-primary {
+      background: #39FF14;
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 6px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 12px #39FF14;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 20px #39FF14;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #39FF14;
+      color: #39FF14;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 700;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: #39FF14;
+      color: #000;
+      transform: scale(1.07);
+      box-shadow: 0 0 20px #39FF14;
+    }
+
+    /* SKILLS */
+    .skills {
+      margin-top: 80px;
+      padding: 0 5vw;
+    }
+
+    .skills h3 {
+      font-size: 1.6rem;
+      color: #39FF14;
+      text-shadow: 0 0 10px #39FF14;
+      margin-bottom: 25px;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    /* Animation for wrapper */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .skill-item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .skill-item:nth-child(1) { animation-delay: 0.2s; }
+    .skill-item:nth-child(2) { animation-delay: 0.4s; }
+    .skill-item:nth-child(3) { animation-delay: 0.6s; }
+    .skill-item:nth-child(4) { animation-delay: 0.8s; }
+    .skill-item:nth-child(5) { animation-delay: 1s; }
+    .skill-item:nth-child(6) { animation-delay: 1.2s; }
+    .skill-item:nth-child(7) { animation-delay: 1.4s; }
+    .skill-item:nth-child(8) { animation-delay: 1.6s; }
+    .skill-item:nth-child(9) { animation-delay: 1.8s; }
+
+    .skill-item span {
+      border: 1px solid #39FF14;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      box-shadow: 0 0 8px rgba(57,255,20,0.4);
+      transition: transform 0.3s, background 0.3s, color 0.3s;
+      display: inline-block;
+    }
+
+    .skill-item span:hover {
+      background: #39FF14;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+
+    /* PROJECT PREVIEW */
+    .preview {
+      margin-top: 120px;
+      padding: 0 5vw 100px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .preview h3 {
+      font-size: 1.6rem;
+      color: #39FF14;
+      text-shadow: 0 0 10px #39FF14;
+      margin-bottom: 30px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .preview-card {
+      background: #0f0f0f;
+      border: 1px solid #39FF14;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+      transition: 0.3s;
+    }
+
+    .preview-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(57, 255, 20, 0.7);
+    }
+
+    .preview-card h4 {
+      color: #39FF14;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .preview-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn-outline {
+        margin-left: 0;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0a0a0a;
+      border-top: 1px solid #39FF14;
+      text-align: center;
+      padding: 20px 0;
+      margin-top:10px;
+    }
+
+    footer .contact-info {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    color: #39FF14;
+    font-size: 0.95rem;
+    }
+
+    footer .contact-info a {
+    color: #39FF14;
+    text-decoration: underline;
+    }
+
+    footer .contact-info a:hover{
+      text-shadow: 0 0 2px #39FF14;
+    }
+
+    footer .socials img {
+    width: 40px;
+    margin: 0 10px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+    transition: 0.3s;
+    }
+
 
     footer img:hover {
       transform: scale(1.2);
       filter: drop-shadow(0 0 6px #39FF14);
     }
-
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-        gap: 30px;
-      }
-    }
   </style>
 </head>
+
 <body>
   <div class="wave-loader">
       <div class="wave-dot"></div>
@@ -252,62 +472,151 @@
       <div class="wave-dot"></div>
   </div>
 
+  <!-- HEADER -->
   <header class="header">
     <h1>Daren</h1>
     <ul>
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="project.html">Projects</a></li>
-      <li><a href="mailto:darenchangyx@gmail.com.com?subject=Hello&body=Hi%20there!"><button>Contact Me</button></a></li>
+      <li>
+        <a href="mailto:darenchangyx@gmail.com?subject=Hello&body=Hi%20there!">
+          <button>Contact Me</button>
+        </a>
+      </li>
     </ul>
   </header>
 
-  <!-- Main content -->
-  <main>
-    <div class="profilepic">
-      <img src="your-photo.jpg" alt="Profile Picture">
-      <div class="contact-info">
-        <p>📞 Phone: +60-18 780 7687</p>
-        <p>✉️ Email: darenchangyx@email.com</p>
-        <p>📍 Address: Shah Alam, Malaysia</p>
-      </div>
-    </div>
+  <!-- MAIN CONTENT -->
+  <main class="home-container">
 
-    <div class="aboutme">
-      <h3>Hi, I'm Daren</h3>
-      <p>I’m passionate about web development and design. I enjoy building modern, responsive websites and continuously learning new technologies to enhance user experiences.</p>
-      <a href="#"><button>View CV</button></a>
-    </div>
+    <!-- HERO -->
+    <section class="hero">
+      <img src="your-photo.jpg" alt="Daren" class="hero-photo">
+      <h1>Hi, I'm <span>Daren</span></h1>
+      <h2>Developer • Web Apps • Python • Embedded Systems</h2>
+      <p>I build practical digital solutions — from management systems to campus apps and smart IoT projects.</p>
+      <div class="hero-buttons">
+        <a href="#"><button class="btn-primary">View CV</button></a>
+        <a href="portfolio.html"><button class="btn-outline">View Portfolio</button></a>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills">
+      <h3>Skills & Tools</h3>
+      <div class="skills-row">
+        <div class="skill-item"><span>Python</span></div>
+        <div class="skill-item"><span>Java</span></div>
+        <div class="skill-item"><span>HTML</span></div>
+        <div class="skill-item"><span>CSS</span></div>
+        <div class="skill-item"><span>JavaScript</span></div>
+        <div class="skill-item"><span>PHP</span></div>
+        <div class="skill-item"><span>MySQL</span></div>
+        <div class="skill-item"><span>C#</span></div>
+        <div class="skill-item"><span>Arduino</span></div>
+      </div>
+    </section>
+
+
+    <!-- PROJECT PREVIEW -->
+    <section class="preview">
+      <h3>Featured Projects</h3>
+      <div class="preview-grid">
+        <div class="preview-card">
+          <h4>Bakery Management System</h4>
+          <p>Python-based CLI system with order, inventory, and account management.</p>
+        </div>
+        <div class="preview-card">
+          <h4>PPE Inventory System</h4>
+          <p>Java Swing system with role-based access and file I/O storage.</p>
+        </div>
+        <div class="preview-card">
+          <h4>Campus Web App</h4>
+          <p>Full-stack web platform for bookings, attendance, exams & more.</p>
+        </div>
+      </div>
+
+      <a href="project.html"><button class="btn-primary">See All Projects</button></a>
+    </section>
+
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <a href="github.com/newgameryx"><img src="https://pngimg.com/uploads/github/github_PNG40.png" alt="GitHub"></a>
-    <a href="linkedin.com/in/daren-chang"><img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG12.png" alt="LinkedIn"></a>
-    <a href="#"><img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord"></a>
+    <div class="contact-info">
+        <p>✉️ <a href="mailto:darenchangyx@gmail.com">darenchangyx@gmail.com</a> | 📞 +60 18-780-7687</p>
+    </div>
+    <div class="socials">
+        <a href="https://github.com/newgameryx"><img src="https://pngimg.com/uploads/github/github_PNG40.png" alt="GitHub"></a>
+        <a href="https://linkedin.com/in/daren-chang"><img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG12.png" alt="LinkedIn"></a>
+        <a href="#"><img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord"></a>
+    </div>
   </footer>
 
-<script>
-document.querySelectorAll('a').forEach(link => {
+  <script>
+  document.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', e => {
-    const href = link.getAttribute('href');
+     const href = link.getAttribute('href');
 
-    if (!href || href.startsWith('index.html') || href.startsWith('#') || href.startsWith('mailto:'))
+      if (!href || href.startsWith('index.html') || href.startsWith('#') || href.startsWith('mailto:'))
       return;
 
-    e.preventDefault();
+      e.preventDefault();
 
-    const loader = document.querySelector('.wave-loader');
-    loader.style.display = 'flex';
+      const loader = document.querySelector('.wave-loader');
+      loader.style.display = 'flex';
 
-    setTimeout(() => {
+      setTimeout(() => {
       window.location.href = href;
-    }, 900);
+      }, 900);
+    });
+    });
+
+      //Fade in Profile picture
+    document.addEventListener("DOMContentLoaded", () => {
+      const heroPhoto = document.querySelector(".hero-photo");
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Trigger popOut animation
+            heroPhoto.style.animation = "popOut 1s ease forwards";
+            
+            // Ensure final state is fixed after animation ends
+            heroPhoto.addEventListener("animationend", () => {
+              heroPhoto.classList.add("pop-out");
+              heroPhoto.style.animation = ""; // clear inline animation
+            }, { once: true });
+
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(heroPhoto);
+    });
+
+
+
+
+    //Fade In Skills
+  document.addEventListener("DOMContentLoaded", () => {
+    const skillItems = document.querySelectorAll(".skill-item");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          skillItems.forEach(item => item.style.animationPlayState = "running");
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    skillItems.forEach(item => item.style.animationPlayState = "paused");
+
+    observer.observe(document.querySelector(".skills-row"));
   });
-});
-</script>
-
-
+  </script>
 
 </body>
 </html>
