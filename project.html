@@ -3,79 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project</title>
+  <title>Daren – Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /* Wave Neon Loader */
+    /* ==== WAVE LOADER ==== */
     .wave-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
-
     .wave-dot {
-    position: relative;
-    width: 22px;
-    height: 22px;
-    margin: 0.8em;
-    border-radius: 50%;
-    background: #39FF14;
-    box-shadow: 0 0 10px #39FF14;
+      position: relative;
+      width: 22px;
+      height: 22px;
+      margin: 0.8em;
+      border-radius: 50%;
+      background: #39FF14;
+      box-shadow: 0 0 10px #39FF14;
     }
-
     .wave-dot::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #39FF14;
-    border-radius: 50%;
-    animation: wave 1.4s ease-out infinite;
-    box-shadow: 0 0 25px #39FF14;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #39FF14;
+      border-radius: 50%;
+      animation: wave 1.4s ease-out infinite;
+      box-shadow: 0 0 25px #39FF14;
     }
-
     .wave-dot:nth-child(1)::before { animation-delay: 0s; }
     .wave-dot:nth-child(2)::before { animation-delay: 0.2s; }
     .wave-dot:nth-child(3)::before { animation-delay: 0.4s; }
     .wave-dot:nth-child(4)::before { animation-delay: 0.6s; }
     .wave-dot:nth-child(5)::before { animation-delay: 0.8s; }
-
     @keyframes wave {
-    50%, 75% {
-        transform: scale(2.6);
-    }
-    80%, 100% {
-        opacity: 0;
-    }
+      50%, 75% { transform: scale(2.6); }
+      80%, 100% { opacity: 0; }
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
+    /* ==== BASE STYLES ==== */
+    html, body {
       margin: 0;
       padding: 0;
-      background-color: #000;
+      overflow-x: hidden;
+      background: #000;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+    }
+    html { font-size: clamp(14px, 0.95vw, 20px); }
+
+    /* ==== HEADER ==== */
+        @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 5vw;
+        gap: 5px;
+        border-bottom-width: 1px;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+        margin-left: 0;
+      }
+
+      .header ul {
+        gap: 5px;
+      }
+
+      .header button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
     }
 
-    /* Header */
     .header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
       z-index: 1000;
-      background-color: #0a0a0a;
+      background: #0a0a0a;
       padding: 30px 5vw;
       display: flex;
       justify-content: space-between;
@@ -83,32 +98,30 @@
       border-bottom: 1px solid #39FF14;
       box-sizing: border-box;
     }
-
     .header h1 {
       color: #39FF14;
-      font-size: 1.8rem;
       text-shadow: 0 0 10px #39FF14;
+      font-size: 1.9rem;
       margin: 0;
-      margin-left: -40px;
+      margin-left: -50px;
+      white-space: nowrap;
     }
-
     .header ul {
       list-style: none;
       display: flex;
-      gap: 55px;
-      margin: 0;
+      flex-wrap: wrap;
+      gap: 35px;
       padding: 0;
+      margin: 0;
+      align-items: center;
     }
-
     .header ul li a {
       text-decoration: none;
       color: #fff;
       font-weight: 500;
-      transition: color 0.3s, text-shadow 0.3s;
+      transition: 0.3s;
       position: relative;
-      top: 5px;
     }
-
     .header ul li a:hover,
     .header ul li a.active {
       color: #39FF14;
@@ -116,20 +129,18 @@
       text-decoration: underline #39FF14;
       text-underline-offset: 5px;
     }
-
     .header button {
-      background-color: transparent;
+      background: transparent;
       border: 1px solid #39FF14;
       color: #39FF14;
       padding: 8px 16px;
       border-radius: 4px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
-
     .header button:hover {
-      background-color: #39FF14;
+      background: #39FF14;
       color: #000;
       box-shadow: 0 0 10px #39FF14;
     }
@@ -140,6 +151,13 @@
         text-align: center;
     }
 
+    .project {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 120px 60px 40px;
+    }
+
     .section {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -147,19 +165,35 @@
         padding: 40px 5vw;
     }
 
+    @keyframes glowIn {
+      0% {
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(57, 255, 20, 0);
+      }
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(57, 255, 20, 0.8);
+      }
+    }
+
     .project-card {
-        background-color: #0f0f0f;
-        border: 1px solid #39FF14;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        width: 100%;
-        box-sizing: border-box; 
-        word-break: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
+      background-color: #0f0f0f;
+      border: 1px solid #39FF14;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 0 rgba(57, 255, 20, 0);
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box; 
+      word-break: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      opacity: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+    }
+
+    .project-card.glow-in {
+      animation: glowIn 0.8s ease forwards;
     }
 
     .project-card:hover{
@@ -209,60 +243,67 @@
         color: #000;
         box-shadow: 0 0 10px #39FF14;
     }
-
-
-
-    /* Footer */
+    /* ==== FOOTER ==== */
     footer {
-      background-color: #0a0a0a;
-      text-align: center;
-      padding: 10px 0;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.7);
+      background: #0a0a0a;
       border-top: 1px solid #39FF14;
-      margin-top: auto;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
     }
-
-    footer img {
+    footer .contact-info {
+      margin-top: -20px;
+      margin-bottom: 10px;
+      color: #39FF14;
+      font-size: 0.95rem;
+    }
+    footer .contact-info a { color: #39FF14; text-decoration: underline; }
+    footer .contact-info a:hover{
+      text-shadow: 0 0 2px #39FF14;
+    }
+    footer .socials img {
       width: 40px;
-      height: 40px;
       margin: 0 10px;
       cursor: pointer;
-      transition: transform 0.3s, filter 0.3s;
       filter: brightness(0) invert(1);
+      transition: 0.3s;
     }
-
     footer img:hover {
       transform: scale(1.2);
       filter: drop-shadow(0 0 6px #39FF14);
     }
 
-    main {
-      padding-top: 120px;
+    /* MOBILE */
+    @media(max-width:900px){
+      .portfolio-grid { grid-template-columns: 1fr; }
     }
-
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
     .section {
         grid-template-columns: repeat(2, 1fr);
-        }
+        gap: 50px; /* slightly smaller on tablets */
+    }
     }
 
     @media (max-width: 650px) {
-        .section {
-            grid-template-columns: 1fr;
-        }
+    .section {
+        grid-template-columns: 1fr;
+        gap: 40px; /* smaller gap on mobile */
+    }
     }
   </style>
 </head>
 
 <body>
   <div class="wave-loader">
-    <div class="wave-dot"></div>
-    <div class="wave-dot"></div>
-    <div class="wave-dot"></div>
-    <div class="wave-dot"></div>
-    <div class="wave-dot"></div>
+      <div class="wave-dot"></div>
+      <div class="wave-dot"></div>
+      <div class="wave-dot"></div>
+      <div class="wave-dot"></div>
+      <div class="wave-dot"></div>
   </div>
 
+  <!-- HEADER -->
   <header class="header">
     <h1>Daren</h1>
     <ul>
@@ -315,30 +356,47 @@
     </div>
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <a href="github.com/newgameryx"><img src="https://pngimg.com/uploads/github/github_PNG40.png" alt="GitHub"></a>
-    <a href="linkedin.com/in/daren-chang"><img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG12.png" alt="LinkedIn"></a>
-    <a href="#"><img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord"></a>
+    <div class="contact-info">
+        <p>✉️ <a href="mailto:darenchangyx@gmail.com">darenchangyx@gmail.com</a> | 📞 +60 18-780-7687</p>
+    </div>
+    <div class="socials">
+        <a href="https://github.com/newgameryx"><img src="https://pngimg.com/uploads/github/github_PNG40.png" alt="GitHub"></a>
+        <a href="https://linkedin.com/in/daren-chang"><img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG12.png" alt="LinkedIn"></a>
+        <a href="#"><img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord"></a>
+    </div>
   </footer>
 
-<script>
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', e => {
-    const href = link.getAttribute('href');
+  <script>
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:')) return;
+        e.preventDefault();
+        const loader = document.querySelector('.wave-loader');
+        loader.style.display = 'flex';
+        setTimeout(() => { window.location.href = href; }, 900);
+      });
+    });
 
-    if (!href || href.startsWith('project.html') || href.startsWith('#') || href.startsWith('mailto:'))
-      return;
+      const cards = document.querySelectorAll('.project-card');
 
-    e.preventDefault();
 
-    const loader = document.querySelector('.wave-loader');
-    loader.style.display = 'flex';
+      //Animation for project cards
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('glow-in');
+          observer.unobserve(entry.target); // Only animate once
+        }
+      });
+    }, {
+      threshold: 0.2 // 20% of card visible triggers animation
+    });
 
-    setTimeout(() => {
-      window.location.href = href;
-    }, 900);
-  });
-});
-</script>
+    // Observe each card
+    cards.forEach(card => observer.observe(card));
+  </script>
 </body>
 </html>
